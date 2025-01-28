@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/27 12:13:34 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:34:26 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void					sort_stack(stack_node **a, stack_node **b);
 int						smallest_number(stack_node **stack);
 long					ft_atol(const char *str);
 void					free_stack(stack_node **a);
+int	quick_sort(stack_node **a, stack_node **b, int size);
+void sort_b(stack_node **a, stack_node **b, int chunksize);
 
 #endif
