@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/29 18:16:26 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:31:28 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,19 @@ void push_to_a(stack_node **a, stack_node **b)
 {
     int rotated = 0;
     t_cost min_cost = find_min_cost(a, b);
+    printf("Index : %d\n", min_cost.index_b);
+    printf("Coste en B : %d\n", min_cost.cost_b);
+    printf("Coste en A : %d\n", min_cost.cost_b);
+    printf("Coste total : %d\n", min_cost.total_cost);
+    printf("Valor : %d\n", min_cost.value);
+    
     if (min_cost.index_b <= (ft_lstsize(*b) / 2))
         while((*b)->value != min_cost.value)
             ft_rotate(b, 'b');
     else
         while((*b)->value != min_cost.value)
             ft_reverse(b, 'b');
+
     if (min_cost.index_b <= (ft_lstsize(*b) / 2))
     {
         while(min_cost.cost_a--)

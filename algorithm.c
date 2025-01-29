@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/01/29 18:13:12 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:05:09 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void	sort_stack(stack_node **a, stack_node **b)
 	{
 		int median = find_median(a, ft_lstsize(*a));
 		push_b(a, b, median);
-		while((*b) != NULL)
+		//while((*b) != NULL)
 			push_to_a(a, b);
 		//insertion_sort(a, b, ft_lstsize(*b));	
 	}
