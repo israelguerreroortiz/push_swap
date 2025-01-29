@@ -6,13 +6,13 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:03:47 by isrguerr          #+#    #+#             */
-/*   Updated: 2024/10/01 12:10:50 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:50:20 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int nbr)
+int	ft_isdigit(char nbr)
 {
 	if (nbr >= '0' && nbr <= '9')
 		return (1);

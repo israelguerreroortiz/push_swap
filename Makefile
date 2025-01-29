@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c utils.c stack_init.c algorithm.c
+SRCS = main.c utils.c stack_init.c algorithm.c cost.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
