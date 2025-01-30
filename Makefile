@@ -58,4 +58,4 @@ test1000: $(NAME)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
-.PHONY: all clean fclean re test2 test5 test100 test500 test100
+.PHONY: all clean fclean re test2 test5 test100 test500 test1000

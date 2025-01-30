@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/29 18:15:59 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:51:17 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void					push_to_a(stack_node **a, stack_node **b);
 t_cost 					find_min_cost(stack_node **a, stack_node **b);
 t_cost 					calculate_cost(stack_node *a, stack_node *b, int index_b);
 int 					find_insert_position_cost(stack_node *a, int value);
+void                    push_to_a_mod(stack_node **a, stack_node **b);
+int                     find_median(stack_node **stack, int size);
 
 #endif

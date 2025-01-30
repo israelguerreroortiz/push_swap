@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/29 19:31:28 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:57:23 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,29 @@ void push_to_a(stack_node **a, stack_node **b)
     t_cost min_cost = find_min_cost(a, b);
     printf("Index : %d\n", min_cost.index_b);
     printf("Coste en B : %d\n", min_cost.cost_b);
-    printf("Coste en A : %d\n", min_cost.cost_b);
+    printf("Coste en A : %d\n", min_cost.cost_a);
     printf("Coste total : %d\n", min_cost.total_cost);
     printf("Valor : %d\n", min_cost.value);
     
     if (min_cost.index_b <= (ft_lstsize(*b) / 2))
+    {
+        printf("He entrado en el if\n");
         while((*b)->value != min_cost.value)
-            ft_rotate(b, 'b');
-    else
-        while((*b)->value != min_cost.value)
-            ft_reverse(b, 'b');
+            ft_rotate(b, 'b');  
+    }
 
-    if (min_cost.index_b <= (ft_lstsize(*b) / 2))
+    else
+    {
+        printf("He entrado en el else\n");
+        while((*b)->value != min_cost.value)
+            ft_reverse(b, 'b');        
+    }
+    printf("Pila B: \n");
+    ft_lstiter(*b, print_node_value);
+    printf("Pila A: \n");
+    ft_lstiter(*a, print_node_value);
+    int median = find_median(a, ft_lstsize(*a));
+    if ((*b)->value <= median)
     {
         while(min_cost.cost_a--)
         {
@@ -90,16 +101,18 @@ void push_to_a(stack_node **a, stack_node **b)
     }
     else
     {
-        while(min_cost.cost_a--)
+        printf("He entrado en el else\n");
+        while(min_cost.cost_a == min_cost.cost_a * -1)
         {
             ft_reverse(a, 'a');
             rotated++;
+            min_cost.cost_a++;
         }
     }
     ft_push(a, b, 'a');
     while(rotated--)
     {
-        if (min_cost.index_b <= (ft_lstsize(*b) / 2))
+        if (min_cost.value <= median)
             ft_rotate(a, 'a');
         else
             ft_reverse(a, 'a');
