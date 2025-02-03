@@ -6,13 +6,13 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 18:41:05 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:11:58 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:56:57 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(stack_node *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 

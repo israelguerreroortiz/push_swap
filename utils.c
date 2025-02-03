@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/31 16:32:45 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:45:44 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,5 +191,5 @@ void	free_stack(stack_node **a)
 		free(*a);
 		*a = temp;
 	}
-	*a = NULL; // Limpia el puntero original
+	*a = NULL;
 }

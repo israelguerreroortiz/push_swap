@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:32 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/31 13:10:25 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:57:36 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ long	ft_atol(const char *str)
 	return (0);
 }
 
-void stack_init(stack_node **a, char **argv)
+void stack_init(t_list **a, char **argv)
 {
     int i;
     int nbr;

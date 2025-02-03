@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/02 17:32:18 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:57:15 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	smallest_number(stack_node **stack)
+int	smallest_number(t_list **stack)
 {
-	stack_node	*current;
+	t_list	*current;
 	int			temp;
 
 	if (*stack == NULL)
@@ -31,9 +31,9 @@ int	smallest_number(stack_node **stack)
 	return (temp);
 }
 
-int biggest_number(stack_node **b, int size)
+int biggest_number(t_list **b, int size)
 {
-	stack_node *current;
+	t_list *current;
 	int max;
 
 	if (size <= 0 || *b == NULL)
@@ -74,10 +74,10 @@ void ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int find_median(stack_node **stack, int size)
+int find_median(t_list **stack, int size)
 {
 	int *values;
-	stack_node *current;
+	t_list *current;
 	int median;
 	int i;
 
@@ -100,10 +100,10 @@ int find_median(stack_node **stack, int size)
 	return (median);
 }
 
-static int position(stack_node **stack, int objetive)
+static int position(t_list **stack, int objetive)
 {
 	int count;
-	stack_node *current;
+	t_list *current;
 
 	current = *stack;
 	count = 0;
@@ -117,21 +117,25 @@ static int position(stack_node **stack, int objetive)
 	return (count);
 }
 
-void push_b(stack_node **a, stack_node **b, int median)
+void push_b(t_list **a, t_list **b, int median)
 {
-	while (*a != NULL)
+	int sizea = ft_lstsize(*a);
+	int biggest = biggest_number(a, sizea);
+	while ((*a)->next != NULL)
 	{
 		if ((*a)->value < median)
 		{
 			ft_push(b, a, 'b');
 			ft_rotate(b, 'b');
 		}
+		else if ((*a)->value == biggest)
+			ft_reverse(a, 'a');
 		else
 			ft_push(b, a, 'b');
 	}
 }
 
-void insertion_sort(stack_node **a, stack_node **b, int size)
+void insertion_sort(t_list **a, t_list **b, int size)
 {
 	int biggest;
 	int pos;
@@ -156,7 +160,7 @@ void insertion_sort(stack_node **a, stack_node **b, int size)
 	}
 }
 
-void	sort_stack(stack_node **a, stack_node **b)
+void	sort_stack(t_list **a, t_list **b)
 {
 	if (ft_lstsize(*a) == 2 && (*a)->value > (*a)->next->value)
 		ft_swap(a, 'a');

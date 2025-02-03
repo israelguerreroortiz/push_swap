@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 11:19:46 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/31 13:11:59 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:55:31 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(stack_node **lst, stack_node *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	stack_node	*current;
+	t_list	*current;
 
 	if (*lst == NULL)
 	{

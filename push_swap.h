@@ -3,53 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/31 11:30:42 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:58:17 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include <stdio.h>
+# include <stdio.h>
 
-typedef struct stack_node
+typedef struct s_list
 {
-	int					value;
-	struct stack_node	*next;
-    struct stack_node	*prev;
-}						stack_node;
+	int				value;
+	struct s_list	*next;
+	struct s_list	*prev;
+}					t_list;
 
-typedef struct s_cost {
-    int cost_b;
-    int cost_a;
-    int total_cost;
-    int index_b;
-	int value;
-} t_cost;
+typedef struct s_cost
+{
+	int				cost_b;
+	int				cost_a;
+	int				total_cost;
+	int				index_b;
+	int				value;
+	int				rr;
+	int				rrr;
+}					t_cost;
 
-void					stack_init(stack_node **a, char **argv);
-void					print_node_value(int content);
-int						input_error(stack_node **a, char *arg);
-void					add_to_node(stack_node **stack, int nbr);
-void					ft_swap(stack_node **stack, char c);
-void					ft_swap_both(stack_node **a, stack_node **b);
-void					ft_rotate(stack_node **stack, char c);
-void					ft_reverse(stack_node **stack, char c);
-void					ft_reverse_both(stack_node **a, stack_node **b);
-void					ft_rotate_both(stack_node **a, stack_node **b);
-int						ft_lst_include(stack_node **stack, int nbr);
-void					ft_push(stack_node **dest, stack_node **src, char c);
-void					sort_stack(stack_node **a, stack_node **b);
-int						smallest_number(stack_node **stack);
-long					ft_atol(const char *str);
-void					free_stack(stack_node **a);
-void					push_to_a(stack_node **a, stack_node **b);
-t_cost 					find_min_cost(stack_node **a, stack_node **b);
-t_cost 					calculate_cost(stack_node **a, stack_node **b, int index_b);
-int 					find_insert_position_cost(stack_node **a, int value);
-void                    push_to_a_mod(stack_node **a, stack_node **b);
-int                     find_median(stack_node **stack, int size);
+void				stack_init(t_list **a, char **argv);
+void				print_node_value(int content);
+int					input_error(t_list **a, char *arg);
+void				add_to_node(t_list **stack, int nbr);
+void				ft_swap(t_list **stack, char c);
+void				ft_swap_both(t_list **a, t_list **b);
+void				ft_rotate(t_list **stack, char c);
+void				ft_reverse(t_list **stack, char c);
+void				ft_reverse_both(t_list **a, t_list **b);
+void				ft_rotate_both(t_list **a, t_list **b);
+int					ft_lst_include(t_list **stack, int nbr);
+void				ft_push(t_list **dest, t_list **src, char c);
+void				sort_stack(t_list **a, t_list **b);
+int					smallest_number(t_list **stack);
+long				ft_atol(const char *str);
+void				free_stack(t_list **a);
+void				push_to_a(t_list **a, t_list **b);
+t_cost				find_min_cost(t_list **a, t_list **b);
+t_cost				calculate_cost(t_list **a, t_list **b, int index_b);
+int					find_insert_position_cost(t_list **a, int value);
+void				push_to_a_mod(t_list **a, t_list **b);
+int					find_median(t_list **stack, int size);
 
 #endif
