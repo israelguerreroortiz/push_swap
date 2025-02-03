@@ -6,7 +6,7 @@
 /*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/26 00:28:39 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:32:45 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ void	ft_push(stack_node **dest, stack_node **src, char c)
 	temp = *src;
 	*src = (*src)->next;
 	temp->next = *dest;
+	if (*dest != NULL)
+		(*dest)->prev = temp;
 	*dest = temp;
+	(*dest)->prev = NULL;
 	if (c == 'a')
 		write(1, "pa\n", 3);
 	else if (c == 'b')
@@ -100,6 +103,7 @@ void	ft_swap(stack_node **stack, char c)
 	*stack = (*stack)->next;
 	temp->next = (*stack)->next;
 	(*stack)->next = temp;
+	temp->prev = *stack;
 	if (c == 'a')
 		write(1, "sa\n", 3);
 	else if (c == 'b')
@@ -127,6 +131,7 @@ void	ft_rotate(stack_node **stack, char c)
 	*stack = (*stack)->next;
 	temp->next = NULL;
 	last->next = temp;
+	temp->prev = last;
 	if (c == 'a')
 		write(1, "ra\n", 3);
 	else if (c == 'b')
@@ -159,7 +164,9 @@ void	ft_reverse(stack_node **stack, char c)
 	if (prev != NULL)
 		prev->next = NULL;
 	last->next = *stack;
+	(*stack)->prev = last;
 	*stack = last;
+	(*stack)->prev = NULL;
 	if (c == 'a')
 		write(1, "rra\n", 4);
 	else if (c == 'b')
