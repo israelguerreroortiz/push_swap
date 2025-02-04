@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/03 17:45:44 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:51:09 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	input_error(stack_node **a, char *arg)
+int	input_error(t_list **a, char *arg)
 {
 	int		i;
 	long	nbr;
@@ -40,9 +40,9 @@ int	input_error(stack_node **a, char *arg)
 		return (0);
 }
 
-int	ft_lst_include(stack_node **stack, int nbr)
+int	ft_lst_include(t_list **stack, int nbr)
 {
-	stack_node	*current;
+	t_list	*current;
 
 	current = *stack;
 	while (current != NULL)
@@ -54,9 +54,9 @@ int	ft_lst_include(stack_node **stack, int nbr)
 	return (0);
 }
 
-void	add_to_node(stack_node **stack, int nbr)
+void	add_to_node(t_list **stack, int nbr)
 {
-	stack_node	*new;
+	t_list	*new;
 
 	if (!stack)
 	{
@@ -74,9 +74,9 @@ void	print_node_value(int content)
 	printf("%d\n", content);
 }
 
-void	ft_push(stack_node **dest, stack_node **src, char c)
+void	ft_push(t_list **dest, t_list **src, char c)
 {
-	stack_node	*temp;
+	t_list	*temp;
 
 	if (src == NULL || *src == NULL)
 		return ;
@@ -95,9 +95,9 @@ void	ft_push(stack_node **dest, stack_node **src, char c)
 		return ;
 }
 
-void	ft_swap(stack_node **stack, char c)
+void	ft_swap(t_list **stack, char c)
 {
-	stack_node	*temp;
+	t_list	*temp;
 
 	temp = *stack;
 	*stack = (*stack)->next;
@@ -112,17 +112,17 @@ void	ft_swap(stack_node **stack, char c)
 		return ;
 }
 
-void	ft_swap_both(stack_node **a, stack_node **b)
+void	ft_swap_both(t_list **a, t_list **b)
 {
 	ft_swap(a, 0);
 	ft_swap(b, 0);
 	write(1, "ss\n", 3);
 }
 
-void	ft_rotate(stack_node **stack, char c)
+void	ft_rotate(t_list **stack, char c)
 {
-	stack_node	*temp;
-	stack_node	*last;
+	t_list	*temp;
+	t_list	*last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -140,17 +140,17 @@ void	ft_rotate(stack_node **stack, char c)
 		return ;
 }
 
-void	ft_rotate_both(stack_node **a, stack_node **b)
+void	ft_rotate_both(t_list **a, t_list **b)
 {
 	ft_rotate(a, 0);
 	ft_rotate(b, 0);
 	write(1, "rr", 2);
 }
 
-void	ft_reverse(stack_node **stack, char c)
+void	ft_reverse(t_list **stack, char c)
 {
-	stack_node	*last;
-	stack_node	*prev;
+	t_list	*last;
+	t_list	*prev;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -175,15 +175,15 @@ void	ft_reverse(stack_node **stack, char c)
 		return ;
 }
 
-void	ft_reverse_both(stack_node **a, stack_node **b)
+void	ft_reverse_both(t_list **a, t_list **b)
 {
 	ft_reverse(a, 0);
 	ft_reverse(b, 0);
 	write(1, "rrr", 2);
 }
-void	free_stack(stack_node **a)
+void	free_stack(t_list **a)
 {
-	stack_node *temp;
+	t_list *temp;
 
 	while (*a != NULL)
 	{

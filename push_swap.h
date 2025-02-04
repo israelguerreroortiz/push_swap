@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/03 17:58:17 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:56:29 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int					smallest_number(t_list **stack);
 long				ft_atol(const char *str);
 void				free_stack(t_list **a);
 void				push_to_a(t_list **a, t_list **b);
-t_cost				find_min_cost(t_list **a, t_list **b);
-t_cost				calculate_cost(t_list **a, t_list **b, int index_b);
+t_cost				find_min_cost(t_list **a, t_list **b, int median);
+t_cost				calculate_cost(t_list **a, t_list **b, int index_b, int median, int value);
 int					find_insert_position_cost(t_list **a, int value);
 void				push_to_a_mod(t_list **a, t_list **b);
 int					find_median(t_list **stack, int size);

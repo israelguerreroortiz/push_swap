@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:47:08 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/01/15 17:18:55 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:50:47 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
-stack_node	*ft_lstnew(int content);
-void		ft_lstadd_front(stack_node **lst, stack_node *new);
-int			ft_lstsize(stack_node *lst);
-stack_node	*ft_lstlast(stack_node *lst);
-void		ft_lstadd_back(stack_node **lst, stack_node *new);
-void		ft_lstdelone(stack_node *lst, void (*del)(void *));
-void		ft_lstclear(stack_node **lst);
-void		ft_lstiter(stack_node *lst, void (*f)(int));
+t_list	*ft_lstnew(int content);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstclear(t_list **lst);
+void		ft_lstiter(t_list *lst, void (*f)(int));
 
 #endif
