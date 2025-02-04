@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/04 12:51:09 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:03:17 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	ft_rotate_both(t_list **a, t_list **b)
 {
 	ft_rotate(a, 0);
 	ft_rotate(b, 0);
-	write(1, "rr", 2);
+	write(1, "rr\n", 2);
 }
 
 void	ft_reverse(t_list **stack, char c)
@@ -179,7 +179,7 @@ void	ft_reverse_both(t_list **a, t_list **b)
 {
 	ft_reverse(a, 0);
 	ft_reverse(b, 0);
-	write(1, "rrr", 2);
+	write(1, "rrr\n", 2);
 }
 void	free_stack(t_list **a)
 {
