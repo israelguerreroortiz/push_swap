@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/04 17:10:59 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:56:48 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,75 +100,78 @@ int find_median(t_list **stack, int size)
 	return (median);
 }
 
-static int position(t_list **stack, int objetive)
+void	big_sort(t_list **a, t_list **b)
 {
-	int count;
-	t_list *current;
-
-	current = *stack;
-	count = 0;
-	while(current != NULL)
-	{
-		if (current->value == objetive)
-			break;
-		count++;
-		current = current->next;
-	}
-	return (count);
+    int median = find_median(b, ft_lstsize(*b));
+    int sizea = ft_lstsize(*a);
+    t_cost min_cost = find_min_cost(a, b, median);
+    int rotated = 0;
+    
+    while (min_cost.rr--)
+    {
+        ft_rotate_both(a, b);
+        rotated++;
+    }
+        
+    while (min_cost.rrr--)
+    {
+        rotated++;
+        ft_reverse_both(a, b);
+    }
+    
+    while (min_cost.cost_a--)
+    {
+        if (min_cost.index_a <= sizea / 2)
+            ft_rotate(a, 'a');
+        else
+            ft_reverse(a, 'a');
+            
+    }
+    while (min_cost.cost_b--)
+    {
+        if (min_cost.value > median)
+        {
+            ft_rotate(a, 'a');
+            rotated++;
+        }
+        else
+        {
+            ft_reverse(a, 'a');
+            rotated++;
+        }
+    }
+    ft_push(a, b, 'a');
+    if (min_cost.value < median)
+        rotated++;
+    while(rotated--)
+    {
+        if (min_cost.value > median)
+            ft_reverse(a, 'a');
+        else
+            ft_rotate(a, 'a');
+    }
 }
 
-void push_b(t_list **a, t_list **b, int median)
-{
-	int sizea = ft_lstsize(*a);
-	int biggest = biggest_number(a, sizea);
-	while ((*a)->next != NULL)
-	{
-		if ((*a)->value < median)
-		{
-			ft_push(b, a, 'b');
-			ft_rotate(b, 'b');
-		}
-		else if ((*a)->value == biggest)
-			ft_rotate(a, 'a');
-		else
-			ft_push(b, a, 'b');
-	}
-}
+//void ()
 
-void insertion_sort(t_list **a, t_list **b, int size)
+void    sort_stack(t_list **a, t_list **b)
 {
-	int biggest;
-	int pos;
- 
-	while(*b != NULL)
+    int size = ft_lstsize(*a);
+    
+    if (size == 2)
+        ft_swap(a, 'a');
+    //else if (size == 3)
+        //sort_three(a);
+    //else if (size <= 5)
+        //sort_five(a, b);
+    else
 	{
-		biggest = biggest_number(b, size);
-		pos = position(b, biggest);
-		if ((*b)->value == biggest)
-			ft_push(a, b, 'a');
-		else
-		{
-			if (pos <= ft_lstsize(*b) / 2)
-			{
-				while((*b)->value != biggest)
-					ft_rotate(b, 'b');	
-			}
-			else
-				while((*b)->value != biggest)
-					ft_reverse(b, 'b');
-		}
-	}
-}
-
-void	sort_stack(t_list **a, t_list **b)
-{
-	if (ft_lstsize(*a) == 2 && (*a)->value > (*a)->next->value)
-		ft_swap(a, 'a');
-	else
-	{
-		int median = find_median(a, ft_lstsize(*a));
-		push_b(a, b, median);
-		while(*b != NULL)
-			push_to_a(a, b);
+		ft_push(b, a, 'b');
+		ft_push(b, a, 'b');
+		if ((*b)->value < (*b)->next->value)
+			ft_swap(b, 'b');
+		big_sort(a, b);
+		//sort_three(a);
+		//push_to_a(a, b);
 	}
 }
