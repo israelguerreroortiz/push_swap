@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/06 18:56:48 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:52:29 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	big_sort(t_list **a, t_list **b)
     int sizea = ft_lstsize(*a);
     t_cost min_cost = find_min_cost(a, b, median);
     int rotated = 0;
-    
     while (min_cost.rr--)
     {
         ft_rotate_both(a, b);
@@ -131,28 +130,27 @@ void	big_sort(t_list **a, t_list **b)
     {
         if (min_cost.value > median)
         {
-            ft_rotate(a, 'a');
+            ft_rotate(b, 'a');
             rotated++;
         }
         else
         {
-            ft_reverse(a, 'a');
+            ft_reverse(b, 'a');
             rotated++;
         }
     }
-    ft_push(a, b, 'a');
+    ft_push(b, a, 'b');
     if (min_cost.value < median)
         rotated++;
     while(rotated--)
     {
         if (min_cost.value > median)
-            ft_reverse(a, 'a');
+            ft_reverse(b, 'b');
         else
-            ft_rotate(a, 'a');
+            ft_rotate(b, 'b');
     }
 }
 
-//void ()
 
 void    sort_stack(t_list **a, t_list **b)
 {
@@ -170,8 +168,10 @@ void    sort_stack(t_list **a, t_list **b)
 		ft_push(b, a, 'b');
 		if ((*b)->value < (*b)->next->value)
 			ft_swap(b, 'b');
-		big_sort(a, b);
+		while((*a))
+			big_sort(a, b);
+		while((*b) != NULL)
+			ft_push(a, b, 'a');
 		//sort_three(a);
-		//push_to_a(a, b);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/06 17:39:19 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:47:26 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,27 @@ int find_insert_position_cost(t_list **b, int value, int median)
         current = *b;
         while (current) 
         {
-        if (current->value < value && (!current->next || current->next->value < value))
-            break;
-        position++;
-        current = current->next;
+            if (current->value < value)
+                break;
+            position++;
+            current = current->next;
         }
     }
     else
     {
         current = ft_lstlast(*b);
+        //printf("Current value:%d\n", current->value);
+        //printf("Current prev value:%d\n", current->prev->value);
+        //printf("value:%d\n", value);
         while(current)
         {
-            if (current->value > value && (!current->prev || current->prev->value > value))
+            if (current->value > value)
                 break;
-            position--;
+            position++;
             current = current->prev;
         }
     }
-    return (abs(position));   
+    return (position);   
 }
 
 t_cost calculate_cost(t_list **a, t_list **b, int index_a, int median, int value) {
@@ -58,13 +61,13 @@ t_cost calculate_cost(t_list **a, t_list **b, int index_a, int median, int value
     //printf("Cost A: %d\n", cost.cost_a);
     if (cost.cost_a && cost.cost_b)
     {
-        if ((cost.index_a <= sizea) && (cost.value > median))
+        if ((cost.index_a <= sizea / 2) && (cost.value > median))
         {
             cost.rr++;
             cost.cost_a--;
             cost.cost_b--;
         }
-        if ((cost.index_a > sizea) && (cost.value < median))
+        if ((cost.index_a > sizea / 2) && (cost.value < median))
         {
             cost.rrr++;
             cost.cost_a--;
@@ -85,12 +88,12 @@ t_cost find_min_cost(t_list **a, t_list **b, int median) {
     while (current) 
     {
         current_cost = calculate_cost(a, b, index, median, current->value);
-        printf("Current value: %d\n", current_cost.value);
-        printf("Current costA: %d\n", current_cost.cost_a);
-        printf("Current costB: %d\n", current_cost.cost_b);
-        printf("Current rr: %d\n", current_cost.rr);
-        printf("Current rrr: %d\n", current_cost.rrr);
-        printf("Current totalcost: %d\n\n", current_cost.total_cost);
+        //printf("Current value: %d\n", current_cost.value);
+        //printf("Current costA: %d\n", current_cost.cost_a);
+        //printf("Current costB: %d\n", current_cost.cost_b);
+        //printf("Current rr: %d\n", current_cost.rr);
+        //printf("Current rrr: %d\n", current_cost.rrr);
+        //printf("Current totalcost: %d\n\n", current_cost.total_cost);
         if (current_cost.total_cost < min_cost.total_cost)
         {
             min_cost.cost_a = current_cost.cost_a;
@@ -103,17 +106,15 @@ t_cost find_min_cost(t_list **a, t_list **b, int median) {
             if (min_cost.total_cost == 0)
                 return (min_cost);
         }
-        printf("Min_cost value: %d\n", min_cost.value);
-        printf("Min_cost costA: %d\n", min_cost.cost_a);
-        printf("Min_cost costB: %d\n", min_cost.cost_b);
-        printf("Min_cost rr: %d\n", min_cost.rr);
-        printf("Min_cost rrr: %d\n", min_cost.rrr);
-        printf("Min_cost total_cost: %d\n\n", min_cost.total_cost);
+        //printf("Min_cost value: %d\n", min_cost.value);
+        //printf("Min_cost costA: %d\n", min_cost.cost_a);
+        //printf("Min_cost costB: %d\n", min_cost.cost_b);
+        //printf("Min_cost rr: %d\n", min_cost.rr);
+        //printf("Min_cost rrr: %d\n", min_cost.rrr);
+        //printf("Min_cost total_cost: %d\n\n", min_cost.total_cost);
         current = current->next;
         index++;
     }
     return (min_cost);
 }
-
-
 
