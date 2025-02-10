@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/06 17:07:44 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:17:10 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -26,6 +27,7 @@ typedef struct s_cost
 	int				cost_a;
 	int				cost_b;
 	int				total_cost;
+	bool			reverse;
 	int				index_a;
 	int				rr;
 	int				rrr;

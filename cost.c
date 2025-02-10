@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/07 18:47:26 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:18:37 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,29 @@ int find_insert_position_cost(t_list **b, int value, int median)
     }
     return (position);   
 }
+
+/*void calculate_mix(t_cost *cost, int median, int sizea)
+{
+    if (cost->value > median && cost->index_a <= sizea / 2)
+    {
+        while(cost->cost_a-- && cost->cost_a--)
+        {
+            cost->cost_a--;
+            cost->cost_b--;
+            cost->rr++;   
+        }
+    }
+    if (cost->value < median && cost->index_a > sizea / 2)
+    {
+        while(cost->cost_a-- && cost->cost_a--)
+        {
+            cost->cost_a--;
+            cost->cost_b--;
+            cost->rrr++;   
+        }
+    }
+    if (cost->value > median && cost->index_a <= sizea / 2)
+}*/
 
 t_cost calculate_cost(t_list **a, t_list **b, int index_a, int median, int value) {
     t_cost cost;

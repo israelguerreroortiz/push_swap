@@ -37,8 +37,8 @@ test3: $(NAME)
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
-test5: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-5000 -n 5))
+test30: $(NAME)
+	$(eval ARG = $(shell shuf -i 0-500 -n 30))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l

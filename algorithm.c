@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/07 18:52:29 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:09:47 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,10 @@ void    sort_stack(t_list **a, t_list **b)
 		ft_push(b, a, 'b');
 		if ((*b)->value < (*b)->next->value)
 			ft_swap(b, 'b');
-		while((*a))
-			big_sort(a, b);
-		while((*b) != NULL)
-			ft_push(a, b, 'a');
+		//while((*a))
+		big_sort(a, b);
+		//while((*b) != NULL)
+			//ft_push(a, b, 'a');
 		//sort_three(a);
 	}
 }
