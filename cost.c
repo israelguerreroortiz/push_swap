@@ -3,141 +3,140 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/09 17:18:37 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:32:14 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int find_insert_position_cost(t_list **b, int value, int median)
+int	find_insert_position_cost(t_list *list, int value, int n)
 {
-    int position = 0;
-    t_list *current;
-    
-    if (value > median)
-    {
-        current = *b;
-        while (current) 
-        {
-            if (current->value < value)
-                break;
-            position++;
-            current = current->next;
-        }
-    }
-    else
-    {
-        current = ft_lstlast(*b);
-        //printf("Current value:%d\n", current->value);
-        //printf("Current prev value:%d\n", current->prev->value);
-        //printf("value:%d\n", value);
-        while(current)
-        {
-            if (current->value > value)
-                break;
-            position++;
-            current = current->prev;
-        }
-    }
-    return (position);   
+	int		position;
+	t_list	*current;
+
+	position = 0;
+	if (!list)
+		return (position);
+
+	if (n == 1)
+	{
+		current = list;
+		while (current)
+		{
+			if (value > current->value)
+				break ;
+			position++;
+			current = current->next;
+		}
+	}
+	else
+	{
+		current = ft_lstlast(list);
+		while (current)
+		{
+			if (value < current->value)
+				break ;
+			position++;
+			current = current->prev;
+		}
+	}
+	return (position);
 }
 
-/*void calculate_mix(t_cost *cost, int median, int sizea)
+int search_index(t_list *list, int value)
 {
-    if (cost->value > median && cost->index_a <= sizea / 2)
-    {
-        while(cost->cost_a-- && cost->cost_a--)
-        {
-            cost->cost_a--;
-            cost->cost_b--;
-            cost->rr++;   
-        }
-    }
-    if (cost->value < median && cost->index_a > sizea / 2)
-    {
-        while(cost->cost_a-- && cost->cost_a--)
-        {
-            cost->cost_a--;
-            cost->cost_b--;
-            cost->rrr++;   
-        }
-    }
-    if (cost->value > median && cost->index_a <= sizea / 2)
-}*/
-
-t_cost calculate_cost(t_list **a, t_list **b, int index_a, int median, int value) {
-    t_cost cost;
-    int sizea = ft_lstsize(*a);
-    cost.rr = 0;
-    cost.rrr = 0;
-    cost.value = value;
-    cost.index_a = index_a;
-    if (index_a <= sizea / 2)
-        cost.cost_a = index_a;
-    else
-        cost.cost_a =  sizea - index_a;
-    cost.cost_b = find_insert_position_cost(b, value, median);
-    //printf("Cost A: %d\n", cost.cost_a);
-    if (cost.cost_a && cost.cost_b)
-    {
-        if ((cost.index_a <= sizea / 2) && (cost.value > median))
-        {
-            cost.rr++;
-            cost.cost_a--;
-            cost.cost_b--;
-        }
-        if ((cost.index_a > sizea / 2) && (cost.value < median))
-        {
-            cost.rrr++;
-            cost.cost_a--;
-            cost.cost_b--;
-        }
-    }
-    cost.total_cost = cost.cost_b + cost.cost_a + cost.rr + cost.rrr;
-    return (cost);
-}
-
-t_cost find_min_cost(t_list **a, t_list **b, int median) {
-    t_cost min_cost;
-    t_cost current_cost;
-    t_list *current = (*a);
-    int index = 0;
+    int i;
     
-    min_cost.total_cost = INT_MAX;
-    while (current) 
+    i = 0;
+    while(list)
     {
-        current_cost = calculate_cost(a, b, index, median, current->value);
-        //printf("Current value: %d\n", current_cost.value);
-        //printf("Current costA: %d\n", current_cost.cost_a);
-        //printf("Current costB: %d\n", current_cost.cost_b);
-        //printf("Current rr: %d\n", current_cost.rr);
-        //printf("Current rrr: %d\n", current_cost.rrr);
-        //printf("Current totalcost: %d\n\n", current_cost.total_cost);
-        if (current_cost.total_cost < min_cost.total_cost)
-        {
-            min_cost.cost_a = current_cost.cost_a;
-            min_cost.cost_b = current_cost.cost_b;
-            min_cost.total_cost = current_cost.total_cost;
-            min_cost.index_a = current_cost.index_a;
-            min_cost.rr = current_cost.rr;
-            min_cost.rrr = current_cost.rrr;
-            min_cost.value = current->value;
-            if (min_cost.total_cost == 0)
-                return (min_cost);
-        }
-        //printf("Min_cost value: %d\n", min_cost.value);
-        //printf("Min_cost costA: %d\n", min_cost.cost_a);
-        //printf("Min_cost costB: %d\n", min_cost.cost_b);
-        //printf("Min_cost rr: %d\n", min_cost.rr);
-        //printf("Min_cost rrr: %d\n", min_cost.rrr);
-        //printf("Min_cost total_cost: %d\n\n", min_cost.total_cost);
-        current = current->next;
-        index++;
+        if (list->value == value)
+            break;
+        list = list->next;
+        i++;
     }
-    return (min_cost);
+    return (i);
 }
 
+int	ft_case_rarb(t_list **a, t_list **b, t_cost *cost, int value)
+{
+    cost->ra = 0;
+    cost->rb = 0;
+    cost->rra = 0;
+    cost->rrb = 0;
+    cost->index_a = search_index(*a, value);
+    cost->ra = cost->index_a;
+    cost->rb = find_insert_position_cost((*b), value, 0);
+    return (cost->ra + cost->rb);
+}
+
+int	ft_case_rrarrb(t_list **a, t_list **b, t_cost *cost, int value)
+{
+    int sizea;
+    
+    cost->ra = 0;
+    cost->rb = 0;
+    cost->rra = 0;
+    cost->rrb = 0;
+    sizea = ft_lstsize(*a);
+    cost->index_a = search_index(*a, value);
+    cost->rra = sizea - cost->index_a;
+    cost->rrb = find_insert_position_cost((*b), value, 1);
+    return (cost->rra + cost->rrb);
+}
+
+int	ft_case_rarrb(t_list **a, t_list **b, t_cost *cost, int value)
+{
+    cost->ra = 0;
+    cost->rb = 0;
+    cost->rra = 0;
+    cost->rrb = 0;
+    cost->index_a = search_index(*a, value);
+    cost->ra = cost->index_a;
+    cost->rrb = find_insert_position_cost((*b), value, 1);
+    return (cost->ra + cost->rrb);
+}
+
+int	ft_case_rrarb(t_list **a, t_list **b, t_cost *cost, int value)
+{
+    int sizea;
+
+    cost->ra = 0;
+    cost->rb = 0;
+    cost->rra = 0;
+    cost->rrb = 0;
+    sizea = ft_lstsize(*a);
+    cost->index_a = search_index(*a, value);
+    cost->rra = sizea - cost->index_a;
+    cost->rb = find_insert_position_cost((*b), value, 0);
+    return (cost->rra + cost->rb);
+}
+
+t_cost	calculate_cost(t_list **a, t_list **b)
+{
+	int		total_cost;
+
+	t_cost	cost;
+	t_list	*current;
+
+    total_cost = INT_MAX;
+	ft_bzero(&cost, sizeof(cost));
+	current = (*a);
+	while (current)
+	{
+		if (total_cost > ft_case_rarb(a, b, &cost, current->value))
+			total_cost = ft_case_rarb(a, b, &cost, current->value);
+		if (total_cost > ft_case_rrarrb(a, b, &cost, current->value))
+			total_cost = ft_case_rrarrb(a, b, &cost, current->value);
+		if (total_cost > ft_case_rarrb(a, b, &cost, current->value))
+			total_cost = ft_case_rarrb(a, b, &cost, current->value);
+		if (total_cost > ft_case_rrarb(a, b, &cost, current->value))
+			total_cost = ft_case_rrarb(a, b, &cost, current->value);
+		current = current->next;
+	}
+	return (cost);
+}
