@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/13 18:32:14 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:57:44 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ t_cost	calculate_cost(t_list **a, t_list **b)
 
     total_cost = INT_MAX;
 	ft_bzero(&cost, sizeof(cost));
+                            //Esto es válido para encontrar los movimientos más efectivos en un mismo index, ahora, deberia comparar cada index con el más rentable que tengo
 	current = (*a);
 	while (current)
 	{
