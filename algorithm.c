@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/13 18:37:12 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:46:06 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	big_sort(t_list **a, t_list **b)
 
 	while (ft_lstsize(*a) > 3)
 	{
-		cost = calculate_cost(a, b);
-		while(cost.rra-- && cost.rrb--)
+		cost = min_cost(a, b);
+		while((cost.rra-- && cost.rrb--) && (cost.rra > 0) && (cost.rrb > 0))
 			ft_reverse_both(a, b);
-		while(cost.ra-- && cost.rb--)
+		while((cost.ra-- && cost.rb--) && (cost.ra > 0) && (cost.rb > 0))
 			ft_rotate_both(a, b);
 		while(cost.rra-- && cost.rra > 0)
 			ft_reverse(a, 'a');

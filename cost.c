@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/13 18:57:44 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:48:11 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,28 +116,58 @@ int	ft_case_rrarb(t_list **a, t_list **b, t_cost *cost, int value)
     return (cost->rra + cost->rb);
 }
 
-t_cost	calculate_cost(t_list **a, t_list **b)
+int	calculate_cost(t_list **a, t_list **b, t_cost *cost, int value)
 {
-	int		total_cost;
-
-	t_cost	cost;
-	t_list	*current;
+    int		total_cost;
 
     total_cost = INT_MAX;
-	ft_bzero(&cost, sizeof(cost));
-                            //Esto es válido para encontrar los movimientos más efectivos en un mismo index, ahora, deberia comparar cada index con el más rentable que tengo
-	current = (*a);
-	while (current)
-	{
-		if (total_cost > ft_case_rarb(a, b, &cost, current->value))
-			total_cost = ft_case_rarb(a, b, &cost, current->value);
-		if (total_cost > ft_case_rrarrb(a, b, &cost, current->value))
-			total_cost = ft_case_rrarrb(a, b, &cost, current->value);
-		if (total_cost > ft_case_rarrb(a, b, &cost, current->value))
-			total_cost = ft_case_rarrb(a, b, &cost, current->value);
-		if (total_cost > ft_case_rrarb(a, b, &cost, current->value))
-			total_cost = ft_case_rrarb(a, b, &cost, current->value);
-		current = current->next;
-	}
-	return (cost);
+        if (total_cost > ft_case_rarb(a, b, cost, value))
+        {
+            total_cost = ft_case_rarb(a, b, cost, value);
+            printf("coste rarb %d\n", total_cost);  
+        }
+        if (total_cost > ft_case_rrarrb(a, b, cost, value))
+        {
+            total_cost = ft_case_rrarrb(a, b, cost, value);
+            printf("coste rrarrb %d\n", total_cost);  
+        }
+        if (total_cost > ft_case_rarrb(a, b, cost, value))
+        {
+            total_cost = ft_case_rarrb(a, b, cost, value); 
+            printf("coste rarrb %d\n", total_cost); 
+        }
+        if (total_cost > ft_case_rrarb(a, b, cost, value))
+        {
+            total_cost = ft_case_rrarb(a, b, cost, value);
+            printf("coste rrarb %d\n", total_cost);  
+        }
+    cost->total_cost = total_cost;
+    printf("coste retornado%d\n", total_cost);
+    return (total_cost);
+}
+
+t_cost  min_cost(t_list **a, t_list **b)
+{
+    t_list	*current;
+    t_cost  cost;
+    t_cost  temp;
+    
+    current = *a;
+    ft_bzero(&cost, sizeof(cost));
+    cost.total_cost = INT_MAX;
+    ft_bzero(&temp, sizeof(cost));
+    while (current)
+    {
+        if (cost.total_cost > calculate_cost(a, b, &temp, current->value))
+        {
+            cost.ra = temp.ra;
+            cost.rb = temp.rb;
+            cost.rra = temp.rra;
+            cost.rrb = temp.rrb;
+            //if (cost.total_cost == 0)
+                //return (cost);
+        }
+        current = current->next;
+    }
+    return (cost);
 }
