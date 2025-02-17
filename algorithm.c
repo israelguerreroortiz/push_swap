@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/14 17:46:06 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:38:40 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,57 @@
 
 void	big_sort(t_list **a, t_list **b)
 {
-	t_cost	cost;
+	t_cost	*cost;
 
-	while (ft_lstsize(*a) > 3)
+	cost = NULL;
+	cost = min_cost(a, b);
+	printf("cost rb %d\n", cost->rb);
+	while (cost->rr > 0)
 	{
-		cost = min_cost(a, b);
-		while((cost.rra-- && cost.rrb--) && (cost.rra > 0) && (cost.rrb > 0))
-			ft_reverse_both(a, b);
-		while((cost.ra-- && cost.rb--) && (cost.ra > 0) && (cost.rb > 0))
-			ft_rotate_both(a, b);
-		while(cost.rra-- && cost.rra > 0)
-			ft_reverse(a, 'a');
-		while(cost.rrb-- && cost.rrb > 0)
-			ft_reverse(b, 'b');
-		while(cost.ra-- && cost.ra > 0)
-			ft_rotate(a, 'a');
-		while(cost.rb-- && cost.rb > 0)
-			ft_rotate(b, 'b');
-		ft_push(b, a, 'b');
+		ft_rotate_both(a, b);
+		cost->rr--;
 	}
+	while (cost->rrr > 0)
+	{
+		ft_reverse_both(a, b);
+		cost->rrr--;
+	}
+	while (cost->rra > 0 && cost->rrb > 0)
+	{
+		ft_reverse_both(a, b);
+		cost->rra--;
+		cost->rrb--;
+	}
+	while (cost->ra > 0 && cost->rb > 0)
+	{
+		ft_rotate_both(a, b);
+		cost->ra--;
+		cost->rb--;
+	}
+	while (cost->rra > 0)
+	{
+		ft_reverse(a, 'a');
+		cost->rra--;
+	}
+	while (cost->rrb > 0)
+	{
+		ft_reverse(b, 'b');
+		cost->rrb--;
+	}
+	while (cost->ra > 0)
+	{
+		ft_rotate(a, 'a');
+		cost->ra--;
+	}
+	while (cost->rb > 0)
+	{
+		ft_rotate(b, 'b');
+		cost->rb--;
+	}
+	ft_push(b, a, 'b');
 }
 
-void sort_three(t_list **a)
+void	sort_three(t_list **a)
 {
 	int	first;
 	int	second;
@@ -63,7 +92,7 @@ void sort_three(t_list **a)
 		ft_reverse(a, 'a');
 }
 
-void sort_five(t_list **a, t_list **b)
+void	sort_five(t_list **a, t_list **b)
 {
 	while (ft_lstsize(*a) > 3)
 		ft_push(b, a, 'b');
@@ -91,8 +120,9 @@ void	sort_stack(t_list **a, t_list **b)
 	{
 		ft_push(b, a, 'b');
 		ft_push(b, a, 'b');
+		//while (ft_lstsize(*a) > 3)
 		big_sort(a, b);
 		sort_three(a);
-		//back_to_a(a, b);
+		// back_to_a(a, b);
 	}
 }
