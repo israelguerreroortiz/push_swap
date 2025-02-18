@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:54:31 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/15 22:36:34 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:24:37 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main(int argc, char **argv)
     	sort_stack(&a, &b);
 	printf("Pila B: \n");
 	ft_lstiter(b, print_node_value);
+	printf("Pila A: \n");
+	ft_lstiter(a, print_node_value);
 	//printf("Pila A: \n");
 	//ft_lstiter(a, print_node_value);
     free_stack(&a);

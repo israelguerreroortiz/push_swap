@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/17 19:18:56 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:27:28 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 typedef struct s_cost
 {
 	int				index_a;
+	int				index_b;
 	int				value;
 	int				ra;
 	int				rb;
@@ -53,11 +54,13 @@ long				ft_atol(const char *str);
 void				free_stack(t_list **a);
 void				push_to_a(t_list **a, t_list **b);
 t_cost				find_min_cost(t_list **a, t_list **b);
-int					calculate_cost(t_list **a, t_list **b, t_cost **cost, int value);
+int					calculate_cost(t_list **a, t_list **b, t_cost *cost, int value);
 int					find_insert_position_cost(t_list *a, int value);
 void				push_to_a_mod(t_list **a, t_list **b);
 int					find_median(t_list **stack, int size);
 void				big_sort(t_list **a, t_list **b);
 t_cost  			*min_cost(t_list **a, t_list **b);
+int					find_insert_position_cost_a(t_list *list, int push);
+int 				is_sorted(t_list *stack, int size);
 
 #endif

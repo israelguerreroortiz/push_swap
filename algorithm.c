@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/17 19:38:40 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:48:05 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	big_sort(t_list **a, t_list **b)
 
 	cost = NULL;
 	cost = min_cost(a, b);
-	printf("cost rb %d\n", cost->rb);
+	// printf("cost rb %d\n", cost->rb);
+	// ft_lstiter(*b, print_node_value);
 	while (cost->rr > 0)
 	{
 		ft_rotate_both(a, b);
@@ -63,6 +64,22 @@ void	big_sort(t_list **a, t_list **b)
 		cost->rb--;
 	}
 	ft_push(b, a, 'b');
+}
+
+void	push_to_a(t_list **a, t_list **b)
+{
+	t_list	*last;
+	
+	last = malloc(sizeof(t_list));
+	if (!last)
+		return ;
+	last = ft_lstlast(*a);
+	b = 0;
+	if (last->value < (*a)->value && last->value > (*b)->value)
+		ft_reverse(a, 'a');
+	else
+		ft_push(a, b, 'a');
+	free(last);
 }
 
 void	sort_three(t_list **a)
@@ -120,9 +137,10 @@ void	sort_stack(t_list **a, t_list **b)
 	{
 		ft_push(b, a, 'b');
 		ft_push(b, a, 'b');
-		//while (ft_lstsize(*a) > 3)
-		big_sort(a, b);
+		while (ft_lstsize(*a) > 3)
+			big_sort(a, b);
 		sort_three(a);
-		// back_to_a(a, b);
+		//while (*b != NULL)
+		push_to_a(a, b);
 	}
 }
