@@ -37,7 +37,17 @@ test3: $(NAME)
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
+test4: $(NAME)
+	$(eval ARG = $(shell shuf -i 0-500 -n 4))
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
 test5: $(NAME)
+	$(eval ARG = $(shell shuf -i 0-500 -n 5))
+	./push_swap $(ARG) | ./checker_linux $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+test10: $(NAME)
 	$(eval ARG = $(shell shuf -i 0-500 -n 5))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "

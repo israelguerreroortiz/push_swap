@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:07:02 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:14:52 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,14 @@ void				big_sort(t_list **a, t_list **b);
 t_cost				*min_cost(t_list **a, t_list **b);
 int					find_insert_position_cost_a(t_list *list, int push);
 int					is_sorted(t_list *stack, int size);
-
+void				sort_four(t_list **a, t_list **b);
 int					search_index(t_list *list, int value);
 int					ft_case_rarb(t_list **a, t_list **b, t_cost *cost,
 						int value);
+void				sort_three(t_list **a);
+int					ft_biggest(t_list *list);
+void				insertion_sort(t_list **a, t_list **b);
+int					ft_smallest(t_list *list);
 
 // Apply movements
 

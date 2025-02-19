@@ -6,16 +6,34 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:54:31 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:24:16 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:15:17 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	print_node_value(int content)
+void	sort_four(t_list **a, t_list **b)
 {
-	printf("%d\n", content);
+	int	smallest;
+	int	smallest_i;
+
+	smallest = ft_smallest(*a);
+	smallest_i = search_index(*a, smallest);
+	while (ft_lstsize(*a) > 3)
+	{
+		if ((*a)->value == smallest)
+			ft_push(b, a, 'b');
+		else
+		{
+			if (smallest_i < 4 / 2)
+				ft_rotate(a, 'a');
+			else
+				ft_reverse(a, 'a');
+		}
+	}
+	sort_three(a);
+	ft_push(a, b, 'a');
 }
 
 int	is_sorted(t_list *stack, int size)
