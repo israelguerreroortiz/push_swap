@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = main.c utils.c stack_init.c algorithm.c cost.c
+SRCS = main.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
@@ -37,8 +37,8 @@ test3: $(NAME)
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
-test30: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-500 -n 30))
+test5: $(NAME)
+	$(eval ARG = $(shell shuf -i 0-500 -n 5))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l

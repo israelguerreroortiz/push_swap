@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/18 18:27:28 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:07:02 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,27 @@ long				ft_atol(const char *str);
 void				free_stack(t_list **a);
 void				push_to_a(t_list **a, t_list **b);
 t_cost				find_min_cost(t_list **a, t_list **b);
-int					calculate_cost(t_list **a, t_list **b, t_cost *cost, int value);
+int					calculate_cost(t_list **a, t_list **b, t_cost *cost,
+						int value);
 int					find_insert_position_cost(t_list *a, int value);
 void				push_to_a_mod(t_list **a, t_list **b);
 int					find_median(t_list **stack, int size);
 void				big_sort(t_list **a, t_list **b);
-t_cost  			*min_cost(t_list **a, t_list **b);
+t_cost				*min_cost(t_list **a, t_list **b);
 int					find_insert_position_cost_a(t_list *list, int push);
-int 				is_sorted(t_list *stack, int size);
+int					is_sorted(t_list *stack, int size);
+
+int					search_index(t_list *list, int value);
+int					ft_case_rarb(t_list **a, t_list **b, t_cost *cost,
+						int value);
+
+// Apply movements
+
+void				ft_apply_rr(t_list **a, t_list **b, int rr);
+void				ft_apply_rrr(t_list **a, t_list **b, int rrr);
+void				ft_apply_ra(t_list **a, int ra);
+void				ft_apply_rb(t_list **b, int rb);
+void				ft_apply_rra(t_list **a, int rra);
+void				ft_apply_rrb(t_list **a, int rrb);
 
 #endif

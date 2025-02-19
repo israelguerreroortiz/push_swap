@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/18 18:48:05 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/19 17:58:40 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,67 +19,30 @@ void	big_sort(t_list **a, t_list **b)
 
 	cost = NULL;
 	cost = min_cost(a, b);
-	// printf("cost rb %d\n", cost->rb);
-	// ft_lstiter(*b, print_node_value);
-	while (cost->rr > 0)
-	{
-		ft_rotate_both(a, b);
-		cost->rr--;
-	}
-	while (cost->rrr > 0)
-	{
-		ft_reverse_both(a, b);
-		cost->rrr--;
-	}
-	while (cost->rra > 0 && cost->rrb > 0)
-	{
-		ft_reverse_both(a, b);
-		cost->rra--;
-		cost->rrb--;
-	}
-	while (cost->ra > 0 && cost->rb > 0)
-	{
-		ft_rotate_both(a, b);
-		cost->ra--;
-		cost->rb--;
-	}
-	while (cost->rra > 0)
-	{
-		ft_reverse(a, 'a');
-		cost->rra--;
-	}
-	while (cost->rrb > 0)
-	{
-		ft_reverse(b, 'b');
-		cost->rrb--;
-	}
-	while (cost->ra > 0)
-	{
-		ft_rotate(a, 'a');
-		cost->ra--;
-	}
-	while (cost->rb > 0)
-	{
-		ft_rotate(b, 'b');
-		cost->rb--;
-	}
+	if (cost->rr > 0)
+		ft_apply_rr(a, b, cost->rr);
+	if (cost->rrr > 0)
+		ft_apply_rrr(a, b, cost->rrr);
+	if (cost->ra > 0)
+		ft_apply_ra(a, cost->ra);
+	if (cost->rb > 0)
+		ft_apply_rb(b, cost->rb);
+	if (cost->rra > 0)
+		ft_apply_rra(a, cost->rra);
+	if (cost->rrb > 0)
+		ft_apply_rrb(b, cost->rrb);
 	ft_push(b, a, 'b');
 }
 
 void	push_to_a(t_list **a, t_list **b)
 {
-	t_list	*last;
-	
-	last = malloc(sizeof(t_list));
-	if (!last)
-		return ;
-	last = ft_lstlast(*a);
-	b = 0;
-	if (last->value < (*a)->value && last->value > (*b)->value)
-		ft_reverse(a, 'a');
-	else
-		ft_push(a, b, 'a');
-	free(last);
+	int	objetive;
+
+	objetive = find_insert_position_cost_a(*a, (*b)->value);
+	if (objetive)
+		while ((*a)->value != objetive)
+			ft_reverse(a, 'a');
+	ft_push(a, b, 'a');
 }
 
 void	sort_three(t_list **a)
@@ -140,7 +103,9 @@ void	sort_stack(t_list **a, t_list **b)
 		while (ft_lstsize(*a) > 3)
 			big_sort(a, b);
 		sort_three(a);
-		//while (*b != NULL)
-		push_to_a(a, b);
+		while (*b != NULL)
+			push_to_a(a, b);
+		while ((*a)->value > ft_lstlast(*a)->value)
+			ft_rotate(a, 'a');
 	}
 }

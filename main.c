@@ -6,16 +6,21 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:54:31 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/18 17:24:37 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:24:16 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft/libft.h"
+#include "push_swap.h"
 
-int is_sorted(t_list *stack, int size)
+void	print_node_value(int content)
 {
-	int i;
+	printf("%d\n", content);
+}
+
+int	is_sorted(t_list *stack, int size)
+{
+	int	i;
 
 	if (stack == NULL || size <= 1)
 		return (1);
@@ -30,11 +35,24 @@ int is_sorted(t_list *stack, int size)
 	return (1);
 }
 
+void	free_stack(t_list **a)
+{
+	t_list	*temp;
+
+	while (*a != NULL)
+	{
+		temp = (*a)->next;
+		free(*a);
+		*a = temp;
+	}
+	*a = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	
+
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
@@ -44,16 +62,11 @@ int	main(int argc, char **argv)
 		argv = ft_split(argv[1], 32);
 		stack_init(&a, argv);
 	}
-    else
+	else
 		stack_init(&a, argv + 1);
 	if (!is_sorted(a, ft_lstsize(a)))
-    	sort_stack(&a, &b);
-	printf("Pila B: \n");
-	ft_lstiter(b, print_node_value);
-	printf("Pila A: \n");
+		sort_stack(&a, &b);
 	ft_lstiter(a, print_node_value);
-	//printf("Pila A: \n");
-	//ft_lstiter(a, print_node_value);
-    free_stack(&a);
-    return (0);
+	free_stack(&a);
+	return (0);
 }
