@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/19 19:15:33 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:02:57 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,21 @@ void	sort_three(t_list **a)
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
-	if (first > second && second < third && first < third)
+	if (first > second && second < third && first < third) // si el primero es mayor que el segundo, el segundo y el primero es menor al tercero sa 2 1 5
 		ft_swap(a, 'a');
-	else if (first > second && second > third && first > third)
+	else if (first > second && second > third && first > third) // si el primero es mayor que el segundo y el tercero es el más pequeño // ascendente // 5 2 1
 	{
 		ft_swap(a, 'a');
 		ft_reverse(a, 'a');
 	}
-	else if (first > second && second < third && first > third)
+	else if (first > second && second < third && first > third) // si el primero es mayor que el segundo y tercero, y el segundo es menor al tercero 5 2 3
 		ft_rotate(a, 'a');
-	else if (first < second && second > third && first < third)
+	else if (first < second && second > third && first < third) // 1 5 3
 	{
 		ft_swap(a, 'a');
 		ft_rotate(a, 'a');
 	}
-	else if (first < second && second > third && first > third)
+	else if (first < second && second > third && first > third) // 
 		ft_reverse(a, 'a');
 }
 
@@ -87,15 +87,14 @@ void	sort_five(t_list **a, t_list **b)
 			smallest = ft_smallest(*a);
 			smallest_i = search_index(*a, smallest);
 		}
+		else if (smallest_i < 5 / 2)
+			ft_rotate(a, 'a');
 		else
-		{
-			if (smallest_i < 5 / 2)
-				ft_rotate(a, 'a');
-			else
-				ft_reverse(a, 'a');
-		}
+			ft_reverse(a, 'a');
 	}
 	sort_three(a);
+	if ((*b)->value < (*b)->next->value)
+		ft_swap(b, 'b');
 	ft_push(a, b, 'a');
 	ft_push(a, b, 'a');
 }
