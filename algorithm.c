@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/20 15:02:57 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:01:36 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	big_sort(t_list **a, t_list **b)
 	if (cost->rrb > 0)
 		ft_apply_rrb(b, cost->rrb);
 	ft_push(b, a, 'b');
+	free(cost);
 }
 
 void	push_to_a(t_list **a, t_list **b)
@@ -54,21 +55,21 @@ void	sort_three(t_list **a)
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
-	if (first > second && second < third && first < third) // si el primero es mayor que el segundo, el segundo y el primero es menor al tercero sa 2 1 5
+	if (first > second && second < third && first < third)
 		ft_swap(a, 'a');
-	else if (first > second && second > third && first > third) // si el primero es mayor que el segundo y el tercero es el más pequeño // ascendente // 5 2 1
+	else if (first > second && second > third && first > third)
 	{
 		ft_swap(a, 'a');
 		ft_reverse(a, 'a');
 	}
-	else if (first > second && second < third && first > third) // si el primero es mayor que el segundo y tercero, y el segundo es menor al tercero 5 2 3
+	else if (first > second && second < third && first > third)
 		ft_rotate(a, 'a');
-	else if (first < second && second > third && first < third) // 1 5 3
+	else if (first < second && second > third && first < third)
 	{
 		ft_swap(a, 'a');
 		ft_rotate(a, 'a');
 	}
-	else if (first < second && second > third && first > third) // 
+	else if (first < second && second > third && first > third)
 		ft_reverse(a, 'a');
 }
 

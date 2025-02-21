@@ -85,6 +85,7 @@ int	calculate_cost(t_list **a, t_list **b, t_cost *cost, int value)
 	if (total_cost > ft_case_rrarb(a, b, temp, value))
 		total_cost = ft_case_rrarb(a, b, cost, value);
 	cost->total_cost = total_cost;
+	free(temp);
 	return (total_cost);
 }
 

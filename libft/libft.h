@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:47:08 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/20 18:37:19 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:00:45 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#ifndef BUFFER_SIZE
+# ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
 

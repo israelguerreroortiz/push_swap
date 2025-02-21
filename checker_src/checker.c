@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:47:47 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/21 11:46:30 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:04:58 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 
 static char	*ft_check_mov(t_list **a, t_list **b, char *line)
 {
-	if (line[0] == 'p' && line[1] == 'a' && line[2] == '\n')
+	if (!ft_strncmp(line, "pa\n", 3))
 		ft_push(a, b, 'a');
-    else if (line[0] == 'p' && line[1] == 'b' && line[2] == '\n')
+	else if (!ft_strncmp(line, "pb\n", 3))
 		ft_push(b, a, 'b');
-	else if (line[0] == 'r' && line[1] == 'a' && line[2] == '\n')
+	else if (!ft_strncmp(line, "ra\n", 3))
 		ft_rotate(a, 'a');
-	else if (line[0] == 'r' && line[1] == 'b' && line[2] == '\n')
+	else if (!ft_strncmp(line, "rb\n", 3))
 		ft_rotate(b, 'b');
-	else if (line[0] == 'r' && line[1] == 'r' && line[2] == '\n')
+	else if (!ft_strncmp(line, "rr\n", 3))
 		ft_rotate_both(a, b);
-	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'a' && line[3] == '\n')
+	else if (!ft_strncmp(line, "rra\n", 4))
 		ft_reverse(a, 'a');
-    else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'b' && line[3] == '\n')
+	else if (!ft_strncmp(line, "rrb\n", 4))
 		ft_reverse(b, 'b');
-    else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'r' && line[3] == '\n')
+	else if (!ft_strncmp(line, "rrr\n", 4))
 		ft_reverse_both(a, b);
-    else if (line[0] == 's' && line[1] == 'a' && line[2] == '\n')
+	else if (!ft_strncmp(line, "sa\n", 3))
 		ft_swap(a, 'a');
-    else if (line[0] == 's' && line[1] == 'b' && line[2] == '\n')
+	else if (!ft_strncmp(line, "sb\n", 3))
 		ft_swap(b, 'b');
-    else if (line[0] == 's' && line[1] == 's' && line[2] == '\n')
+	else if (!ft_strncmp(line, "ss\n", 3))
 		ft_swap_both(a, b);
-    else
-        return (NULL);
-    return(get_next_line(0));
+	else
+		return (NULL);
+	return (get_next_line(0));
 }
 
 static void	ft_check_file(t_list **a, t_list **b, char *line)
@@ -63,9 +63,9 @@ static void	ft_check_file(t_list **a, t_list **b, char *line)
 
 int	main(int argc, char **argv)
 {
-	t_list *a;
-	t_list *b;
-	char *line;
+	t_list	*a;
+	t_list	*b;
+	char	*line;
 
 	a = NULL;
 	b = NULL;
@@ -86,6 +86,6 @@ int	main(int argc, char **argv)
 	else
 		ft_check_file(&a, &b, line);
 	ft_lstclear(&a);
-    ft_lstclear(&b);
+	ft_lstclear(&b);
 	return (0);
 }
