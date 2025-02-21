@@ -1,7 +1,11 @@
 NAME = push_swap
+BONUS = checker
 
-SRCS = main.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c
+SRCS = push_swap.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c
 OBJS = $(SRCS:.c=.o)
+
+B_SRCS = checker_src/checker.c libft/get_next_line.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c
+B_OBJS = $(B_SRCS:.c=.o)
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -17,55 +21,19 @@ $(NAME): $(OBJS) $(LIBFT)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
+bonus: $(BONUS)
+
+$(BONUS): $(B_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(BONUS) $(B_OBJS) -L $(LIBFT_DIR) -lft
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(B_OBJS)
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-test2: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-100 -n 2))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test3: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-100 -n 3))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test4: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-500 -n 4))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test5: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-500 -n 5))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test10: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-500 -n 5))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test100: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-5000 -n 100))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test500: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-5000 -n 500))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-test1000: $(NAME)
-	$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-
-.PHONY: all clean fclean re test2 test5 test100 test500 test1000
+.PHONY: all bonus clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:03:20 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:17:59 by iisraa11         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,7 @@ t_cost	*min_cost(t_list **a, t_list **b)
 	t_list	*current;
 	t_cost	*cost;
 	t_cost	*temp;
-	int		value;
 
-	value = 0;
 	current = *a;
 	cost = malloc(sizeof(t_cost));
 	temp = malloc(sizeof(t_cost));

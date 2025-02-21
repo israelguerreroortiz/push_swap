@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 11:47:08 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:05:28 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:37:19 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+#ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 // String functions
 int		ft_isalnum(int c);
@@ -62,6 +66,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+// Linked Lists
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -70,5 +75,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(int));
+
+// Get next line
+char	*get_next_line(int fd);
 
 #endif
