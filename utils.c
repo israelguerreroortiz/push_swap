@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:34:46 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:37:26 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,24 @@ int	search_index(t_list *list, int value)
 	return (i);
 }
 
-void	ft_swap_both(t_list **a, t_list **b)
+void	ft_swap_both(t_list **a, t_list **b, bool check)
 {
-	ft_swap(a, 0);
-	ft_swap(b, 0);
+	ft_swap(a, 0, check);
+	ft_swap(b, 0, check);
 	write(1, "ss\n", 3);
 }
 
-void	ft_rotate_both(t_list **a, t_list **b)
+void	ft_rotate_both(t_list **a, t_list **b, bool check)
 {
-	ft_rotate(a, 0);
-	ft_rotate(b, 0);
+	ft_rotate(a, 0, check);
+	ft_rotate(b, 0, check);
 	write(1, "rr\n", 3);
 }
 
-void	ft_reverse_both(t_list **a, t_list **b)
+void	ft_reverse_both(t_list **a, t_list **b, bool check)
 {
-	ft_reverse(a, 0);
-	ft_reverse(b, 0);
+	ft_reverse(a, 0, check);
+	ft_reverse(b, 0, check);
 	write(1, "rrr\n", 4);
 }
 

@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:06:20 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/21 15:02:48 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:32:23 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	sort_four(t_list **a, t_list **b)
 	while (ft_lstsize(*a) > 3)
 	{
 		if ((*a)->value == smallest)
-			ft_push(b, a, 'b');
+			ft_push(b, a, 'b', 1);
 		else
 		{
 			if (smallest_i < 4 / 2)
-				ft_rotate(a, 'a');
+				ft_rotate(a, 'a', 1);
 			else
-				ft_reverse(a, 'a');
+				ft_reverse(a, 'a', 1);
 		}
 	}
 	sort_three(a);
-	ft_push(a, b, 'a');
+	ft_push(a, b, 'a', 1);
 }
 
 int	is_sorted(t_list *stack, int size)

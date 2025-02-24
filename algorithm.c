@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/21 15:01:36 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:34:24 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	big_sort(t_list **a, t_list **b)
 		ft_apply_rra(a, cost->rra);
 	if (cost->rrb > 0)
 		ft_apply_rrb(b, cost->rrb);
-	ft_push(b, a, 'b');
+	ft_push(b, a, 'b', 1);
 	free(cost);
 }
 
@@ -42,8 +42,8 @@ void	push_to_a(t_list **a, t_list **b)
 	objetive = find_insert_position_cost_a(*a, (*b)->value);
 	if (objetive)
 		while ((*a)->value != objetive)
-			ft_reverse(a, 'a');
-	ft_push(a, b, 'a');
+			ft_reverse(a, 'a', 1);
+	ft_push(a, b, 'a', 1);
 }
 
 void	sort_three(t_list **a)
@@ -56,21 +56,21 @@ void	sort_three(t_list **a)
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
 	if (first > second && second < third && first < third)
-		ft_swap(a, 'a');
+		ft_swap(a, 'a', 1);
 	else if (first > second && second > third && first > third)
 	{
-		ft_swap(a, 'a');
-		ft_reverse(a, 'a');
+		ft_swap(a, 'a', 1);
+		ft_reverse(a, 'a', 1);
 	}
 	else if (first > second && second < third && first > third)
-		ft_rotate(a, 'a');
+		ft_rotate(a, 'a', 1);
 	else if (first < second && second > third && first < third)
 	{
-		ft_swap(a, 'a');
-		ft_rotate(a, 'a');
+		ft_swap(a, 'a', 1);
+		ft_rotate(a, 'a', 1);
 	}
 	else if (first < second && second > third && first > third)
-		ft_reverse(a, 'a');
+		ft_reverse(a, 'a', 1);
 }
 
 void	sort_five(t_list **a, t_list **b)
@@ -84,20 +84,20 @@ void	sort_five(t_list **a, t_list **b)
 	{
 		if ((*a)->value == smallest)
 		{
-			ft_push(b, a, 'b');
+			ft_push(b, a, 'b', 1);
 			smallest = ft_smallest(*a);
 			smallest_i = search_index(*a, smallest);
 		}
 		else if (smallest_i < 5 / 2)
-			ft_rotate(a, 'a');
+			ft_rotate(a, 'a', 1);
 		else
-			ft_reverse(a, 'a');
+			ft_reverse(a, 'a', 1);
 	}
 	sort_three(a);
 	if ((*b)->value < (*b)->next->value)
-		ft_swap(b, 'b');
-	ft_push(a, b, 'a');
-	ft_push(a, b, 'a');
+		ft_swap(b, 'b', 1);
+	ft_push(a, b, 'a', 1);
+	ft_push(a, b, 'a', 1);
 }
 
 void	sort_stack(t_list **a, t_list **b)
@@ -106,7 +106,7 @@ void	sort_stack(t_list **a, t_list **b)
 
 	size = ft_lstsize(*a);
 	if (size == 2)
-		ft_swap(a, 'a');
+		ft_swap(a, 'a', 1);
 	else if (size == 3)
 		sort_three(a);
 	else if (size == 4)
@@ -115,14 +115,14 @@ void	sort_stack(t_list **a, t_list **b)
 		sort_five(a, b);
 	else
 	{
-		ft_push(b, a, 'b');
-		ft_push(b, a, 'b');
+		ft_push(b, a, 'b', 1);
+		ft_push(b, a, 'b', 1);
 		while (ft_lstsize(*a) > 3)
 			big_sort(a, b);
 		sort_three(a);
 		while (*b != NULL)
 			push_to_a(a, b);
 		while ((*a)->value > ft_lstlast(*a)->value)
-			ft_rotate(a, 'a');
+			ft_rotate(a, 'a', 1);
 	}
 }
