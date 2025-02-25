@@ -3,16 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 16:57:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/21 11:17:59 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:57:46 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
+/*
+	This function checks how many rar and rrb are
+	needed to put the number in the right position in B.
+	If there are rra and rrb, these variables are decreased
+	and rrr is increased.
+*/
 int	ft_case_rrarrb(t_list **a, t_list **b, t_cost *cost, int value)
 {
 	int	sizea;
@@ -35,7 +41,11 @@ int	ft_case_rrarrb(t_list **a, t_list **b, t_cost *cost, int value)
 	}
 	return (cost->rra + cost->rrb + cost->rrr);
 }
-
+/*
+	This function checks how many ra and rrb are
+	needed to put the number in the right position
+	in B.
+*/
 int	ft_case_rarrb(t_list **a, t_list **b, t_cost *cost, int value)
 {
 	cost->ra = 0;
@@ -49,7 +59,11 @@ int	ft_case_rarrb(t_list **a, t_list **b, t_cost *cost, int value)
 	cost->rrb = ft_lstsize(*b) - find_insert_position_cost(*b, value);
 	return (cost->ra + cost->rrb);
 }
-
+/*
+	This function checks how many rra and rb are
+	needed to put the number in the right position
+	in B.
+*/
 int	ft_case_rrarb(t_list **a, t_list **b, t_cost *cost, int value)
 {
 	int	sizea;
@@ -66,7 +80,10 @@ int	ft_case_rrarb(t_list **a, t_list **b, t_cost *cost, int value)
 	cost->rb = find_insert_position_cost(*b, value);
 	return (cost->rra + cost->rb);
 }
-
+/*
+	Calculate_cost check the cheapest form of a number to be
+	in his right position in B.
+*/
 int	calculate_cost(t_list **a, t_list **b, t_cost *cost, int value)
 {
 	t_cost	*temp;
@@ -88,7 +105,11 @@ int	calculate_cost(t_list **a, t_list **b, t_cost *cost, int value)
 	free(temp);
 	return (total_cost);
 }
-
+/*
+	Min_cost function compare all the numbers in a
+	with his respectives costs and return the number
+	with less cost.
+*/
 t_cost	*min_cost(t_list **a, t_list **b)
 {
 	t_list	*current;

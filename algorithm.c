@@ -6,13 +6,16 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/02/24 19:34:24 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:48:07 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
-
+/*
+	Big_sort apply all the movements from the
+	cost struct, modified in min_cost function.
+*/
 void	big_sort(t_list **a, t_list **b)
 {
 	t_cost	*cost;
