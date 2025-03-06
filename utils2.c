@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 18:01:13 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/25 16:07:33 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:46:12 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,7 @@ int	ft_smallest(t_list *list)
 	}
 	return (min);
 }
-/*
-	This function checks how many ra and rb are
-	needed to put the number in the right position.
-	If there are ra and rb, these variables are decreased
-	and rr is increased.
-*/
+
 int	ft_case_rarb(t_list **a, t_list **b, t_cost *cost, int value)
 {
 	cost->ra = 0;
@@ -69,10 +64,8 @@ int	ft_case_rarb(t_list **a, t_list **b, t_cost *cost, int value)
 	}
 	return (cost->ra + cost->rb + cost->rr);
 }
-/*
-	The index of biggest in stack.
-*/
-int	find_biggest(t_list *temp, int biggest)
+
+int	find_correct_pos(t_list *temp, int biggest)
 {
 	int	i;
 
@@ -84,10 +77,7 @@ int	find_biggest(t_list *temp, int biggest)
 	}
 	return (i);
 }
-/*
-	Search the right position to the number from A
-	in B and return the cost from the movements in B.
-*/
+
 int	find_insert_position_cost(t_list *list, int push)
 {
 	t_list	*temp;
@@ -99,10 +89,10 @@ int	find_insert_position_cost(t_list *list, int push)
 	biggest = ft_biggest(list);
 	smallest = ft_smallest(list);
 	i = 0;
-	if (push > list->value && push < ft_lstlast(list)->value)
+	if (push > list->value)
 		i = 0;
 	else if (push > biggest || push < smallest)
-		i = find_biggest(temp, biggest);
+		i = find_correct_pos(temp, biggest);
 	else
 	{
 		while (temp)

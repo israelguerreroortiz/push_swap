@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:47:47 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/24 19:35:28 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:04:58 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 static char	*ft_check_mov(t_list **a, t_list **b, char *line)
 {
 	if (!ft_strncmp(line, "pa\n", 3))
-		ft_push(a, b, 'a', 0);
+		ft_push(a, b, 'a');
 	else if (!ft_strncmp(line, "pb\n", 3))
-		ft_push(b, a, 'b', 0);
+		ft_push(b, a, 'b');
 	else if (!ft_strncmp(line, "ra\n", 3))
-		ft_rotate(a, 'a', 0);
+		ft_rotate(a, 'a');
 	else if (!ft_strncmp(line, "rb\n", 3))
-		ft_rotate(b, 'b', 0);
+		ft_rotate(b, 'b');
 	else if (!ft_strncmp(line, "rr\n", 3))
-		ft_rotate_both(a, b, 0);
+		ft_rotate_both(a, b);
 	else if (!ft_strncmp(line, "rra\n", 4))
-		ft_reverse(a, 'a', 0);
+		ft_reverse(a, 'a');
 	else if (!ft_strncmp(line, "rrb\n", 4))
-		ft_reverse(b, 'b', 0);
+		ft_reverse(b, 'b');
 	else if (!ft_strncmp(line, "rrr\n", 4))
-		ft_reverse_both(a, b, 0);
+		ft_reverse_both(a, b);
 	else if (!ft_strncmp(line, "sa\n", 3))
-		ft_swap(a, 'a', 0);
+		ft_swap(a, 'a');
 	else if (!ft_strncmp(line, "sb\n", 3))
-		ft_swap(b, 'b', 0);
+		ft_swap(b, 'b');
 	else if (!ft_strncmp(line, "ss\n", 3))
-		ft_swap_both(a, b, 0);
+		ft_swap_both(a, b);
 	else
 		return (NULL);
 	return (get_next_line(0));

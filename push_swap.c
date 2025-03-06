@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 14:54:31 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/21 11:37:57 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/03/06 19:46:39 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+
+void	print_stack(t_list *stack)
+{
+	while (stack)
+	{
+		ft_putnbr_fd(stack->value, 1);
+		ft_putchar_fd('\n', 1);
+		stack = stack->next;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +41,9 @@ int	main(int argc, char **argv)
 		stack_init(&a, argv + 1);
 	if (!is_sorted(a, ft_lstsize(a)))
 		sort_stack(&a, &b);
+	print_stack(a);
+	if (is_sorted(a, ft_lstsize(a)))
+		printf("Esta ordenado\n");
 	ft_lstclear(&a);
 	return (0);
 }
