@@ -89,7 +89,7 @@ int	find_insert_position_cost(t_list *list, int push)
 	biggest = ft_biggest(list);
 	smallest = ft_smallest(list);
 	i = 0;
-	if (push > list->value)
+	if (push > list->value && push < ft_lstlast(list)->value)
 		i = 0;
 	else if (push > biggest || push < smallest)
 		i = find_correct_pos(temp, biggest);
