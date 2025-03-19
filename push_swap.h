@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iisraa11 <iisraa11@student.42.fr>          +#+  +:+       +#+        */
+/*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:01:48 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/20 14:40:47 by iisraa11         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:15:25 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void				ft_rotate_both(t_list **a, t_list **b);
 int					ft_lst_include(t_list **stack, int nbr);
 void				ft_push(t_list **dest, t_list **src, char c);
 void				sort_stack(t_list **a, t_list **b);
-int					smallest_number(t_list **stack);
 long				ft_atol(const char *str);
 void				push_to_a(t_list **a, t_list **b);
 t_cost				find_min_cost(t_list **a, t_list **b);

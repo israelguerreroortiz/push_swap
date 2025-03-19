@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:28:27 by isrguerr          #+#    #+#             */
-/*   Updated: 2025/02/19 18:34:46 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:21:47 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	search_index(t_list *list, int value)
 {
+	if (!list || !value)
+		return (INT_MIN);
 	int	i;
 
 	i = 0;

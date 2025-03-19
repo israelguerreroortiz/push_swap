@@ -1,10 +1,10 @@
 NAME = push_swap
 BONUS = checker
 
-SRCS = push_swap.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c
+SRCS = push_swap.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c insertion_sort.c
 OBJS = $(SRCS:.c=.o)
 
-B_SRCS = checker_src/checker.c libft/get_next_line.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c
+B_SRCS = checker_src/checker.c libft/get_next_line.c utils.c utils2.c apply_movements.c movements.c stack_init.c algorithm.c cost.c utils3.c insertion_sort.c
 B_OBJS = $(B_SRCS:.c=.o)
 
 LIBFT_DIR = libft

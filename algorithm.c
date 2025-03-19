@@ -6,7 +6,7 @@
 /*   By: isrguerr <isrguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:44:29 by iisraa11          #+#    #+#             */
-/*   Updated: 2025/03/06 17:09:45 by isrguerr         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:10:44 by isrguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void	sort_stack(t_list **a, t_list **b)
 		sort_four(a, b);
 	else if (size == 5)
 		sort_five(a, b);
+	else if (size > 40)
+		insertion_sort(a, b);
 	else
 	{
 		ft_push(b, a, 'b');
